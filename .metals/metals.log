@@ -3391,3 +3391,83 @@ WARNING: Unmatched cancel notification for request id 1
 2026.02.06 18:15:12 WARN  no build tool detected in workspace 'C:\Users\barra\Desktop\Ryan\Perso\JavaProjects\BudgetApp'. The most common cause for this problem is that the editor was opened in the wrong working directory, for example if you use sbt then the workspace directory should contain build.sbt. 
 2026.02.06 18:15:12 WARN  Build server is not auto-connectable.
 2026.02.06 18:15:12 WARN  no build target for: C:\Users\barra\Desktop\Ryan\Perso\JavaProjects\BudgetApp\BudgetApp.java
+C:\Users\barra\Desktop\Ryan\Perso\JavaProjects\BudgetApp\BudgetApp.java:70: error: unmappable character (0x8F) for encoding windows-1252
+        Button btnNouveauMois = new Button("ðŸ—“ï¸? Nouveau mois");
+                                                  ^
+C:\Users\barra\Desktop\Ryan\Perso\JavaProjects\BudgetApp\BudgetApp.java:214: error: unmappable character (0x8D) for encoding windows-1252
+                setText(empty ? null : (item ? "ðŸ”„" : "ðŸ“?"));
+                                                            ^
+C:\Users\barra\Desktop\Ryan\Perso\JavaProjects\BudgetApp\BudgetApp.java:222: error: unmappable character (0x8F) for encoding windows-1252
+            private final Button btnE = new Button("âœ?");
+                                                      ^
+2026.02.06 18:15:32 WARN  no build target for: C:\Users\barra\Desktop\Ryan\Perso\JavaProjects\BudgetApp\BudgetApp.java
+2026.02.06 18:15:32 INFO  no build target found for C:\Users\barra\Desktop\Ryan\Perso\JavaProjects\BudgetApp\BudgetApp.java. Using fallback presentation compiler.
+2026.02.06 18:15:34 INFO  no build target found for C:\Users\barra\Desktop\Ryan\Perso\JavaProjects\BudgetApp\BudgetApp.java. Using fallback presentation compiler.
+2026.02.06 18:15:34 INFO  no build target found for C:\Users\barra\Desktop\Ryan\Perso\JavaProjects\BudgetApp\BudgetApp.java. Using fallback presentation compiler.
+2026.02.06 18:15:35 INFO  no build target found for C:\Users\barra\Desktop\Ryan\Perso\JavaProjects\BudgetApp\BudgetApp.java. Using fallback presentation compiler.
+2026.02.06 18:31:10 INFO  no build target found for C:\Users\barra\Desktop\Ryan\Perso\JavaProjects\BudgetApp\BudgetApp.java. Using fallback presentation compiler.
+2026.02.06 21:08:00 INFO  Started: Metals version 1.6.5 in folders 'C:\Users\barra\Desktop\Ryan\Perso\JavaProjects\BudgetApp' for client Visual Studio Code 1.108.2.
+2026.02.06 21:08:00 INFO  time: initialize in 0.14s
+2026.02.06 21:08:00 INFO  Memory monitor started
+2026.02.06 21:08:07 WARN  Using H2 2.4.240 which is newer than the version Flyway has been verified with. The latest verified version of H2 is 2.3.232.
+2026.02.06 21:08:09 INFO  no build target found for C:\Users\barra\Desktop\Ryan\Perso\JavaProjects\BudgetApp\BudgetApp.java. Using fallback presentation compiler.
+2026.02.06 21:08:13 WARN  no build tool detected in workspace 'C:\Users\barra\Desktop\Ryan\Perso\JavaProjects\BudgetApp'. The most common cause for this problem is that the editor was opened in the wrong working directory, for example if you use sbt then the workspace directory should contain build.sbt. 
+2026.02.06 21:08:13 WARN  Build server is not auto-connectable.
+2026.02.06 21:08:13 WARN  no build target for: C:\Users\barra\Desktop\Ryan\Perso\JavaProjects\BudgetApp\BudgetApp.java
+2026.02.06 21:08:13 INFO  no build target found for C:\Users\barra\Desktop\Ryan\Perso\JavaProjects\BudgetApp\BudgetApp.java. Using fallback presentation compiler.
+2026.02.06 21:08:13 INFO  no build target found for C:\Users\barra\Desktop\Ryan\Perso\JavaProjects\BudgetApp\BudgetApp.java. Using fallback presentation compiler.
+C:\Users\barra\Desktop\Ryan\Perso\JavaProjects\BudgetApp\BudgetApp.java:70: error: unmappable character (0x8F) for encoding windows-1252
+        Button btnNouveauMois = new Button("ðŸ—“ï¸? Nouveau mois");
+                                                  ^
+C:\Users\barra\Desktop\Ryan\Perso\JavaProjects\BudgetApp\BudgetApp.java:214: error: unmappable character (0x8D) for encoding windows-1252
+                setText(empty ? null : (item ? "ðŸ”„" : "ðŸ“?"));
+                                                            ^
+C:\Users\barra\Desktop\Ryan\Perso\JavaProjects\BudgetApp\BudgetApp.java:222: error: unmappable character (0x8F) for encoding windows-1252
+            private final Button btnE = new Button("âœ?");
+                                                      ^
+2026.02.06 21:08:13 INFO  no build target found for C:\Users\barra\Desktop\Ryan\Perso\JavaProjects\BudgetApp\BudgetApp.java. Using fallback presentation compiler.
+2026.02.06 21:08:14 INFO  no build target found for C:\Users\barra\Desktop\Ryan\Perso\JavaProjects\BudgetApp\BudgetApp.java. Using fallback presentation compiler.
+2026.02.06 21:08:14 INFO  no build target found for C:\Users\barra\Desktop\Ryan\Perso\JavaProjects\BudgetApp\BudgetApp.java. Using fallback presentation compiler.
+févr. 06, 2026 9:08:15 PM org.eclipse.lsp4j.jsonrpc.RemoteEndpoint handleCancellation
+WARNING: Unmatched cancel notification for request id 8
+févr. 06, 2026 9:08:15 PM org.eclipse.lsp4j.jsonrpc.RemoteEndpoint handleCancellation
+WARNING: Unmatched cancel notification for request id 9
+févr. 06, 2026 9:08:15 PM org.eclipse.lsp4j.jsonrpc.RemoteEndpoint handleCancellation
+WARNING: Unmatched cancel notification for request id 10
+2026.02.06 21:08:15 INFO  no build target found for C:\Users\barra\Desktop\Ryan\Perso\JavaProjects\BudgetApp\BudgetApp.java. Using fallback presentation compiler.
+2026.02.06 21:08:18 INFO  time: code lens generation in 5.55s
+2026.02.06 21:08:23 INFO  no build target found for C:\Users\barra\Desktop\Ryan\Perso\JavaProjects\BudgetApp\BudgetApp.java. Using fallback presentation compiler.
+2026.02.06 21:08:25 INFO  no build target found for C:\Users\barra\Desktop\Ryan\Perso\JavaProjects\BudgetApp\BudgetApp.java. Using fallback presentation compiler.
+2026.02.06 21:08:26 INFO  no build target found for C:\Users\barra\Desktop\Ryan\Perso\JavaProjects\BudgetApp\BudgetApp.java. Using fallback presentation compiler.
+2026.02.06 21:08:27 INFO  no build target found for C:\Users\barra\Desktop\Ryan\Perso\JavaProjects\BudgetApp\BudgetApp.java. Using fallback presentation compiler.
+2026.02.06 21:09:15 INFO  no build target found for C:\Users\barra\Desktop\Ryan\Perso\JavaProjects\BudgetApp\BudgetApp.java. Using fallback presentation compiler.
+2026.02.06 21:10:47 INFO  no build target found for C:\Users\barra\Desktop\Ryan\Perso\JavaProjects\BudgetApp\BudgetApp.java. Using fallback presentation compiler.
+2026.02.06 21:14:53 INFO  Shutting down server
+2026.02.06 21:14:53 INFO  Memory monitor stopped
+2026.02.06 21:14:53 INFO  shutting down Metals
+2026.02.06 21:14:53 INFO  Exiting server
+2026.02.07 13:02:33 INFO  tracing is disabled for protocol LSP, to enable tracing of incoming and outgoing JSON messages create an empty file at c:\Users\barra\Desktop\Ryan\Perso\JavaProjects\BudgetApp\.metals\lsp.trace.json or C:\Users\barra\AppData\Local\scalameta\metals\cache\lsp.trace.json
+2026.02.07 13:02:39 INFO  logging to files C:\Users\barra\Desktop\Ryan\Perso\JavaProjects\BudgetApp\.metals\metals.log
+2026.02.07 13:02:39 INFO  Started: Metals version 1.6.5 in folders 'C:\Users\barra\Desktop\Ryan\Perso\JavaProjects\BudgetApp' for client Visual Studio Code 1.109.0.
+2026.02.07 13:02:39 INFO  Memory monitor started
+2026.02.07 13:02:41 WARN  Using H2 2.4.240 which is newer than the version Flyway has been verified with. The latest verified version of H2 is 2.3.232.
+2026.02.07 13:02:41 INFO  no build target found for C:\Users\barra\Desktop\Ryan\Perso\JavaProjects\BudgetApp\BudgetApp.java. Using fallback presentation compiler.
+2026.02.07 13:02:44 INFO  no build target found for C:\Users\barra\Desktop\Ryan\Perso\JavaProjects\BudgetApp\BudgetApp.java. Using fallback presentation compiler.
+2026.02.07 13:02:44 WARN  no build tool detected in workspace 'C:\Users\barra\Desktop\Ryan\Perso\JavaProjects\BudgetApp'. The most common cause for this problem is that the editor was opened in the wrong working directory, for example if you use sbt then the workspace directory should contain build.sbt. 
+2026.02.07 13:02:44 WARN  Build server is not auto-connectable.
+2026.02.07 13:02:44 WARN  no build target for: C:\Users\barra\Desktop\Ryan\Perso\JavaProjects\BudgetApp\BudgetApp.java
+2026.02.07 13:02:44 INFO  no build target found for C:\Users\barra\Desktop\Ryan\Perso\JavaProjects\BudgetApp\BudgetApp.java. Using fallback presentation compiler.
+C:\Users\barra\Desktop\Ryan\Perso\JavaProjects\BudgetApp\BudgetApp.java:70: error: unmappable character (0x8F) for encoding windows-1252
+        Button btnNouveauMois = new Button("ðŸ—“ï¸? Nouveau mois");
+                                                  ^
+C:\Users\barra\Desktop\Ryan\Perso\JavaProjects\BudgetApp\BudgetApp.java:214: error: unmappable character (0x8D) for encoding windows-1252
+                setText(empty ? null : (item ? "ðŸ”„" : "ðŸ“?"));
+                                                            ^
+C:\Users\barra\Desktop\Ryan\Perso\JavaProjects\BudgetApp\BudgetApp.java:222: error: unmappable character (0x8F) for encoding windows-1252
+            private final Button btnE = new Button("âœ?");
+                                                      ^
+2026.02.07 13:02:49 INFO  time: code lens generation in 4.5s
+2026.02.07 13:07:47 INFO  Shutting down server
+2026.02.07 13:07:47 INFO  Memory monitor stopped
+2026.02.07 13:07:47 INFO  shutting down Metals
+2026.02.07 13:07:47 INFO  Exiting server

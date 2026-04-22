@@ -1,24 +1,24 @@
 BUDGETS
 1333.5
-1293.25
+1540.74
 DEPENSES
-Essence|20.0|true|false|true
-CoursesS1|45.0|true|false|false
-CoursesS2|45.0|true|false|false
+Essence|80.0|true|false|true
+CoursesS1|45.0|true|false|true
+CoursesS2|45.0|true|false|true
 Crédit Cofidis|46.52|true|false|true
-CoursesS4|25.0|true|true|true
-CoursesS3|45.0|true|true|true
-sony|5.99|false|true|true
-paris sport|70.0|false|true|true
-Téléphone|12.0|true|true|true
-Cotisation2|5.0|true|true|true
-Betclic|20.0|false|true|true
-Canal+|24.0|true|true|true
-Box|40.0|true|true|true
-Spotify|8.0|true|true|true
+CoursesS4|45.0|true|false|true
+CoursesS3|45.0|true|false|true
+Téléphone|12.0|true|false|true
+Cotisation2|5.0|true|false|true
+Canal+|24.0|true|false|true
+Spotify|8.0|true|false|true
+Cotisations1|4.25|true|false|true
+Sushis|35.0|false|false|true
+PMU|100.0|false|true|true
+Izly|10.45|false|true|true
 Assurance auto|63.0|true|true|true
-Electricité/Gaz|102.0|true|true|true
+Box|40.0|true|true|true
+Loyer|354.0|true|true|true
 PER (Gan)|50.0|true|true|true
 Eau|39.0|true|true|true
-Loyer|354.0|true|true|true
-Cotisations1|4.25|true|true|true
+Electricité/Gaz|102.0|true|true|true
