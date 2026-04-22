@@ -386,11 +386,14 @@ public class BudgetApp extends Application {
     private VBox createCenter() {
         VBox center = new VBox(5);
         center.setPadding(new Insets(10, 20, 10, 20));
+
         tableView = new TableView<>(depenses);
         tableView.getStyleClass().add("table");
 
-        TableColumn<Depense, Boolean> colActive = new TableColumn<>("Inclusion");
+        // 1. Colonne Inclusion (Mode Vacances)
+        TableColumn<Depense, Boolean> colActive = new TableColumn<>("Inc.");
         colActive.setCellValueFactory(new PropertyValueFactory<>("active"));
+        colActive.setPrefWidth(50);
         colActive.setCellFactory(col -> new TableCell<>() {
             private final CheckBox cb = new CheckBox();
             @Override protected void updateItem(Boolean item, boolean empty) {
@@ -405,24 +408,147 @@ public class BudgetApp extends Application {
             }
         });
 
+        // 2. Colonne Payée (Cochée)
+        TableColumn<Depense, Boolean> colCochee = new TableColumn<>("Payée");
+        colCochee.setCellValueFactory(new PropertyValueFactory<>("cochee"));
+        colCochee.setPrefWidth(60);
+        colCochee.setCellFactory(col -> new TableCell<>() {
+            private final CheckBox cb = new CheckBox();
+            @Override protected void updateItem(Boolean item, boolean empty) {
+                super.updateItem(item, empty);
+                if (empty) setGraphic(null);
+                else {
+                    Depense d = getTableView().getItems().get(getIndex());
+                    cb.setSelected(item);
+                    cb.setDisable(!d.isActive());
+                    cb.setOnAction(e -> { d.setCochee(cb.isSelected()); updateCalculs(); sauvegarderDonnees(); });
+                    setGraphic(cb); setAlignment(Pos.CENTER);
+                }
+            }
+        });
+
+        // 3. Désignation
         TableColumn<Depense, String> colNom = new TableColumn<>("Désignation");
         colNom.setCellValueFactory(new PropertyValueFactory<>("nom"));
-        colNom.setPrefWidth(300);
+        colNom.setPrefWidth(350);
 
+        // 4. Montant
         TableColumn<Depense, Double> colMontant = new TableColumn<>("Montant");
         colMontant.setCellValueFactory(new PropertyValueFactory<>("montant"));
+        colMontant.setPrefWidth(120);
         colMontant.setCellFactory(col -> new TableCell<>() {
             @Override protected void updateItem(Double item, boolean empty) {
                 super.updateItem(item, empty);
                 setText(empty ? null : String.format("%.2f €", item));
                 setAlignment(Pos.CENTER);
+                if (!empty) setStyle("-fx-font-weight: bold;");
             }
         });
 
-        tableView.getColumns().addAll(colActive, colNom, colMontant);
+        // 5. Récurrente (RETOUR)
+        TableColumn<Depense, Boolean> colRec = new TableColumn<>("Mensuel");
+        colRec.setCellValueFactory(new PropertyValueFactory<>("recurrente"));
+        colRec.setPrefWidth(80);
+        colRec.setCellFactory(col -> new TableCell<>() {
+            @Override protected void updateItem(Boolean item, boolean empty) {
+                super.updateItem(item, empty);
+                if (empty) setText(null);
+                else {
+                    setText(item ? "🔄 Oui" : "📍 Non");
+                    setAlignment(Pos.CENTER);
+                    setStyle("-fx-font-size: 11px;");
+                }
+            }
+        });
+
+        // 6. Actions (RETOUR)
+        TableColumn<Depense, Void> colActions = new TableColumn<>("Actions");
+        colActions.setPrefWidth(120);
+        colActions.setCellFactory(col -> new TableCell<>() {
+            private final Button btnE = new Button("✏");
+            private final Button btnS = new Button("🗑");
+            private final HBox box = new HBox(10, btnE, btnS);
+            {
+                btnE.getStyleClass().add("btn-action-edit");
+                btnS.getStyleClass().add("btn-action-delete");
+                box.setAlignment(Pos.CENTER);
+                btnE.setOnAction(e -> modifierDepense(getTableView().getItems().get(getIndex())));
+                btnS.setOnAction(e -> {
+                    depenses.remove(getTableView().getItems().get(getIndex()));
+                    updateCalculs(); sauvegarderDonnees();
+                });
+            }
+            @Override protected void updateItem(Void item, boolean empty) {
+                super.updateItem(item, empty);
+                setGraphic(empty ? null : box);
+            }
+        });
+
+        // Style de ligne pour l'opacité (Mode Vacances)
+        tableView.setRowFactory(tv -> new TableRow<>() {
+            @Override protected void updateItem(Depense item, boolean empty) {
+                super.updateItem(item, empty);
+                if (item != null) setOpacity(item.isActive() ? 1.0 : 0.4);
+            }
+        });
+
+        tableView.getColumns().addAll(colActive, colCochee, colNom, colMontant, colRec, colActions);
         center.getChildren().add(tableView);
         VBox.setVgrow(tableView, Priority.ALWAYS);
         return center;
+    }
+
+    private void modifierDepense(Depense d) {
+        Dialog<Boolean> dialog = new Dialog<>();
+        dialog.setTitle("Modifier la dépense");
+        dialog.setHeaderText("Modification de : " + d.getNom());
+
+        // Appliquer le style au dialogue pour rester dans le thème
+        dialog.getDialogPane().getStylesheets().add(getStylesheet());
+        dialog.getDialogPane().getStyleClass().add("root");
+
+        ButtonType saveBtn = new ButtonType("Enregistrer", ButtonBar.ButtonData.OK_DONE);
+        dialog.getDialogPane().getButtonTypes().addAll(saveBtn, ButtonType.CANCEL);
+
+        GridPane grid = new GridPane();
+        grid.setHgap(15);
+        grid.setVgap(15);
+        grid.setPadding(new Insets(20));
+
+        TextField tfNom = new TextField(d.getNom());
+        TextField tfMontant = new TextField(String.valueOf(d.getMontant()));
+        CheckBox cbRec = new CheckBox("Dépense Mensuelle (Récurrente)");
+        cbRec.setSelected(d.isRecurrente());
+
+        grid.add(new Label("Désignation :"), 0, 0);
+        grid.add(tfNom, 1, 0);
+        grid.add(new Label("Montant (€) :"), 0, 1);
+        grid.add(tfMontant, 1, 1);
+        grid.add(cbRec, 1, 2);
+
+        dialog.getDialogPane().setContent(grid);
+
+        // Focus sur le nom par défaut
+        javafx.application.Platform.runLater(tfNom::requestFocus);
+
+        dialog.setResultConverter(b -> b == saveBtn);
+
+        dialog.showAndWait().ifPresent(success -> {
+            if (success) {
+                try {
+                    d.setNom(tfNom.getText());
+                    d.setMontant(Double.parseDouble(tfMontant.getText().replace(",", ".")));
+                    d.setRecurrente(cbRec.isSelected());
+                    
+                    updateCalculs();
+                    sauvegarderDonnees();
+                    tableView.refresh(); // Crucial pour voir les changements immédiatement
+                } catch (NumberFormatException ex) {
+                    Alert alert = new Alert(Alert.AlertType.ERROR, "Le montant n'est pas valide.");
+                    alert.showAndWait();
+                }
+            }
+        });
     }
 
     private void updateCalculs() {
@@ -548,7 +674,9 @@ public class BudgetApp extends Application {
                 ".budget-field { -fx-font-size: 16; -fx-font-weight: bold; -fx-background-color: transparent; -fx-border-color: #e2e8f0; -fx-border-radius: 4; }" +
                 ".result-value { -fx-font-size: 16; -fx-font-weight: bold; }" +
                 ".btn-primary-icon { -fx-background-color: #4f46e5; -fx-text-fill: white; -fx-background-radius: 50; -fx-min-width: 40; }" +
-                ".btn-header-icon { -fx-background-color: rgba(255,255,255,0.2); -fx-text-fill: white; -fx-border-color: white; -fx-border-radius: 5; }";
+                ".btn-header-icon { -fx-background-color: rgba(255,255,255,0.2); -fx-text-fill: white; -fx-border-color: white; -fx-border-radius: 5; }" + 
+                ".btn-action-edit { -fx-background-color: #e0f2fe; -fx-text-fill: #0ea5e9; -fx-cursor: hand; -fx-background-radius: 5; }" +
+                ".btn-action-delete { -fx-background-color: #fee2e2; -fx-text-fill: #ef4444; -fx-cursor: hand; -fx-background-radius: 5; }" ;
     }
 
     public static void main(String[] args) { launch(args); }
